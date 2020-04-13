@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Run4.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Player/Jump1.png" type="Texture" id=11]
 [ext_resource path="res://Player/Jump0.png" type="Texture" id=12]
 [ext_resource path="res://sounds/JumpJoy.wav" type="AudioStream" id=13]
+[ext_resource path="res://sounds/joyDying.ogg" type="AudioStream" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -87,25 +88,37 @@ shape = SubResource( 4 )
 [node name="lblVidas" type="Label" parent="CanvasLayer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 86.0
-margin_bottom = 22.0
+margin_right = 110.0
+margin_bottom = 24.0
 custom_colors/font_color = Color( 0.00392157, 0, 0, 1 )
-text = "Vidas"
+text = "Vidas:"
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="lblQtdVidas" type="Label" parent="CanvasLayer"]
-margin_left = 50.0
-margin_top = 10.0
-margin_right = 89.0
+margin_left = 59.0
+margin_top = 9.0
+margin_right = 98.0
 margin_bottom = 24.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="audioJump" type="AudioStreamPlayer2D" parent="."]
+[node name="Audios" type="Node" parent="."]
+
+[node name="audioJump" type="AudioStreamPlayer2D" parent="Audios"]
+position = Vector2( 542.613, 60.9487 )
 stream = ExtResource( 13 )
+volume_db = -10.064
+
+[node name="die" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource( 14 )
+volume_db = 10.0
+mix_target = 1
 [connection signal="body_entered" from="pes" to="." method="_on_pes_body_entered"]
 [connection signal="body_entered" from="dano" to="." method="_on_dano_body_entered"]
 [connection signal="body_shape_entered" from="dano" to="." method="_on_dano_body_shape_entered"]

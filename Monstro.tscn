@@ -77,3 +77,4 @@ anims/die = SubResource( 3 )
 
 [node name="audioDie" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
+volume_db = 5.0
