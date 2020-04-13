@@ -21,7 +21,8 @@ func _process(delta):
 	$Sprite.flip_h = !flip			
 	
 func Dano():
-	get_node("anim").play("die")	
+	get_node("anim").play("die")
+	get_node("audioDie").play()	
 	
 func Die():
 	$".".queue_free()

@@ -27,13 +27,14 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT;
+			get_node("audioJump").play()
 	else:
 		$Sprite.play("Jump")
 	motion = move_and_slide(motion, UP)
 
 
 func _on_pes_body_entered(body):
-	body.Dano()
+	body.Dano()	
 	motion.y = JUMP_HEIGHT;
 
 
